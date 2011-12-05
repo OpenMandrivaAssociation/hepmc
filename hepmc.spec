@@ -9,11 +9,11 @@
 Name:		%{name}
 Group:		Sciences/Physics
 License:	GPLv2+
-Version:	2.05.00
-Release:	%mkrel 2
+Version:	2.06.05
+Release:	%mkrel 1
 Summary:	C++ Event Record for Monte Carlo Generators
 URL:		https://savannah.cern.ch/projects/hepmc/
-Source0:	http://lcgapp.cern.ch/project/simu/HepMC/download/HepMC-2.05.00.tar.gz
+Source0:	http://lcgapp.cern.ch/project/simu/HepMC/download/HepMC-2.06.05.tar.gz
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
@@ -65,7 +65,7 @@ Provides:	lib%{name}-devel = %{version}-%{release}
 HepMC development files.
 
 %prep
-%setup -q -n HepMC-2.05.00
+%setup -q -n HepMC-2.06.05
 
 %build
 autoreconf -ifs
@@ -80,9 +80,10 @@ autoreconf -ifs
 %install
 %makeinstall_std
 mkdir -p %{buildroot}%{_docdir}/%{name}
-mv -f %{buildroot}/usr/doc/HepMC/* %{buildroot}%{_docdir}/%{name}
-mkdir -p %{buildroot}%{_datadir}/%{name}/examples
-mv -f %{buildroot}/usr/examples/HepMC/* %{buildroot}%{_datadir}/%{name}/examples
+mv -f %{buildroot}%{_datadir}/HepMC/doc/* %{buildroot}%{_docdir}/%{name}
+mv -f %{buildroot}%{_datadir}/HepMC/examples %{buildroot}%{_docdir}/%{name}/examples
+rmdir %{buildroot}%{_datadir}/HepMC/doc
+rmdir %{buildroot}%{_datadir}/HepMC
 
 %clean
 rm -fr %{buildroot}
@@ -93,11 +94,7 @@ rm -fr %{buildroot}
 
 %files		-n %{devname}
 %defattr(-,root,root)
-%doc %dir %{_docdir}/%{name}
-%doc %{_docdir}/%{name}/*
-%dir %{_datadir}/%{name}
-%{_datadir}/%{name}/*
+%doc %{_docdir}/%{name}/
 %{_libdir}/lib*.so
 %{_libdir}/lib*.la
-%dir %{_includedir}/HepMC
-%{_includedir}/HepMC/*
+%{_includedir}/HepMC/
