@@ -9,12 +9,11 @@
 Name:		%{name}
 Group:		Sciences/Physics
 License:	GPLv2+
-Version:	2.06.05
+Version:	2.06.07
 Release:	%mkrel 1
 Summary:	C++ Event Record for Monte Carlo Generators
 URL:		https://savannah.cern.ch/projects/hepmc/
-Source0:	http://lcgapp.cern.ch/project/simu/HepMC/download/HepMC-2.06.05.tar.gz
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
+Source0:	http://lcgapp.cern.ch/project/simu/HepMC/download/HepMC-%{version}.tar.gz
 
 %description
 The HepMC package is an object oriented event record written in C++ for
@@ -65,7 +64,7 @@ Provides:	lib%{name}-devel = %{version}-%{release}
 HepMC development files.
 
 %prep
-%setup -q -n HepMC-2.06.05
+%setup -q -n HepMC-%{version}
 
 %build
 autoreconf -ifs
@@ -79,22 +78,18 @@ autoreconf -ifs
 
 %install
 %makeinstall_std
+find %{buildroot} -type f -name '*.la' -exec rm -f {} \;
+
 mkdir -p %{buildroot}%{_docdir}/%{name}
 mv -f %{buildroot}%{_datadir}/HepMC/doc/* %{buildroot}%{_docdir}/%{name}
 mv -f %{buildroot}%{_datadir}/HepMC/examples %{buildroot}%{_docdir}/%{name}/examples
 rmdir %{buildroot}%{_datadir}/HepMC/doc
 rmdir %{buildroot}%{_datadir}/HepMC
 
-%clean
-rm -fr %{buildroot}
-
 %files		-n %{libname}
-%defattr(-,root,root)
 %{_libdir}/lib*.so.*
 
 %files		-n %{devname}
-%defattr(-,root,root)
 %doc %{_docdir}/%{name}/
 %{_libdir}/lib*.so
-%{_libdir}/lib*.la
 %{_includedir}/HepMC/
