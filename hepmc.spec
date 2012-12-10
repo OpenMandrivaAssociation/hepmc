@@ -93,3 +93,27 @@ rmdir %{buildroot}%{_datadir}/HepMC
 %doc %{_docdir}/%{name}/
 %{_libdir}/lib*.so
 %{_includedir}/HepMC/
+
+
+%changelog
+* Fri Mar 02 2012 Alexander Khrukin <akhrukin@mandriva.org> 2.06.08-1
++ Revision: 781755
+- version update 2.0.6.08
+
+* Fri Jan 20 2012 Alexander Khrukin <akhrukin@mandriva.org> 2.06.07-1
++ Revision: 762905
+- version 2.06.07
+
+* Mon Dec 05 2011 Paulo Andrade <pcpa@mandriva.com.br> 2.06.05-1
++ Revision: 737892
+- Update to latest upstream release version 2.06.05
+
+* Sun Dec 05 2010 Oden Eriksson <oeriksson@mandriva.com> 2.05.00-2mdv2011.0
++ Revision: 611092
+- rebuild
+
+* Wed Dec 02 2009 Paulo Andrade <pcpa@mandriva.com.br> 2.05.00-1mdv2010.1
++ Revision: 472724
+- Import HepMC 2.05.00
+- hepmc
+
