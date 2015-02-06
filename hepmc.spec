@@ -10,7 +10,7 @@ Name:		%{name}
 Group:		Sciences/Physics
 License:	GPLv2+
 Version:	2.06.08
-Release:	1
+Release:	2
 Summary:	C++ Event Record for Monte Carlo Generators
 URL:		https://savannah.cern.ch/projects/hepmc/
 Source0:	http://lcgapp.cern.ch/project/simu/HepMC/download/HepMC-%{version}.tar.gz
